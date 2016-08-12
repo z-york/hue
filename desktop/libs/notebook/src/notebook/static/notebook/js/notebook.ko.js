@@ -963,19 +963,19 @@
 
       if (result.data.length > 0) {
         self.currentQueryTab('queryResults');
+
+        var _initialIndex = self.result.data().length;
+        var _tempData = [];
+        $.each(result.data, function (index, row) {
+          row.unshift(_initialIndex + index + 1);
+          self.result.data.push(row);
+          _tempData.push(row);
+        });
+
+        self.result.images(typeof result.images != "undefined" && result.images != null ? result.images : []);
+
+        $(document).trigger("renderData", {data: _tempData, snippet: self, initial: _initialIndex == 0});
       }
-
-      var _initialIndex = self.result.data().length;
-      var _tempData = [];
-      $.each(result.data, function (index, row) {
-        row.unshift(_initialIndex + index + 1);
-        self.result.data.push(row);
-        _tempData.push(row);
-      });
-
-      self.result.images(typeof result.images != "undefined" && result.images != null ? result.images : []);
-
-      $(document).trigger("renderData", {data: _tempData, snippet: self, initial: _initialIndex == 0});
 
       if (! self.result.fetchedOnce()) {
         result.meta.unshift({type: "INT_TYPE", name: "", comment: null});
