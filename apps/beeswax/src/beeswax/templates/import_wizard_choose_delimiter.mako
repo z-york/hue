@@ -26,7 +26,7 @@ from django.utils.translation import ugettext as _
 <%namespace name="sqlContextPopover" file="/sql_context_popover.mako" />
 <%namespace name="util" file="util.mako" />
 
-${ commonheader(_('Create table from file'), 'metastore', user) | n,unicode }
+${ commonheader(_('Create table from file'), 'metastore', user, request) | n,unicode }
 ${ layout.metastore_menubar() }
 
 ${ require.config() }

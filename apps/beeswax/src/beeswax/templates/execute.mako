@@ -28,7 +28,7 @@
 <%namespace name="layout" file="layout.mako" />
 <%namespace name="sqlContextPopover" file="/sql_context_popover.mako" />
 
-${ commonheader(_('Query'), app_name, user) | n,unicode }
+${ commonheader(_('Query'), app_name, user, request) | n,unicode }
 ${ layout.menubar(section='query') }
 
 <div id="temporaryPlaceholder"></div>

@@ -23,7 +23,7 @@
 <%namespace name="require" file="/require.mako" />
 <%namespace name="sqlContextPopover" file="/sql_context_popover.mako" />
 
-${ commonheader(_('Welcome Home'), "home", user) | n,unicode }
+${ commonheader(_('Welcome Home'), "home", user, request) | n,unicode }
 
 ${ require.config() }
 

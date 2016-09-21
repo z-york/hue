@@ -26,7 +26,7 @@ from django.contrib.auth.models import Group
 <%namespace name="layout" file="layout.mako" />
 <%namespace name="require" file="/require.mako" />
 
-${commonheader(_('Configurations'), "useradmin", user) | n,unicode}
+${commonheader(_('Configurations'), "useradmin", user, request) | n,unicode}
 ${layout.menubar(section='configurations')}
 
 

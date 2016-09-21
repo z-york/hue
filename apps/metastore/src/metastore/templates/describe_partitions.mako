@@ -24,7 +24,7 @@
 <%namespace name="require" file="/require.mako" />
 <%namespace name="sqlContextPopover" file="/sql_context_popover.mako" />
 
-${ commonheader(_('Table Partitions: %(tableName)s') % dict(tableName=table.name), app_name, user) | n,unicode }
+${ commonheader(_('Table Partitions: %(tableName)s') % dict(tableName=table.name), app_name, user, request) | n,unicode }
 ${ components.menubar() }
 
 ${ require.config() }

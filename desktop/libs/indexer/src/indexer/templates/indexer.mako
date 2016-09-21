@@ -25,7 +25,7 @@
 <%namespace name="require" file="/require.mako" />
 <%namespace name="sqlContextPopover" file="/sql_context_popover.mako" />
 
-${ commonheader(_("Solr Indexes"), "search", user, "60px") | n,unicode }
+${ commonheader(_("Solr Indexes"), "search", user, request, "60px") | n,unicode }
 
 ${ require.config() }
 

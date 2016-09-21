@@ -25,7 +25,7 @@
 <%namespace name="notebookKoComponents" file="notebook_ko_components.mako" />
 <%namespace name="sqlContextPopover" file="/sql_context_popover.mako" />
 
-${ commonheader(_('Notebook'), app_name, user, "68px") | n,unicode }
+${ commonheader(_('Notebook'), app_name, user, request, "68px") | n,unicode }
 
 ${ editorComponents.includes() }
 ${ editorComponents.topBar() }

@@ -20,7 +20,7 @@
 
 <%namespace name="require" file="/require.mako" />
 
-${ commonheader("Job Browser", "jobbrowser", user) | n,unicode }
+${ commonheader("Job Browser", "jobbrowser", user, request) | n,unicode }
 
 ${ require.config() }
 
