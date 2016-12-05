@@ -1058,7 +1058,7 @@ ${ dashboard.layout_skeleton() }
         <!-- /ko -->
 
         <div id="result-main" style="overflow-x: auto">
-          <table id="result-container" data-bind="visible: $root.hasRetrievedResults()" style="margin-top: 0; width: 100%">
+          <table id="result-container" data-bind="visible: $root.hasRetrievedResults()" style="margin-top: 0; width: 99%">
             <thead>
               <tr class="result-sorting" data-bind="visible: $root.collection.template.fieldsSelected().length > 0, template: {name: 'result-sorting'}">
               </tr>
