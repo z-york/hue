@@ -603,7 +603,6 @@ from django.utils.translation import ugettext as _
   <script src="${ static('desktop/js/dropzone.js') }" type="text/javascript" charset="utf-8"></script>
   <script src="${ static('desktop/js/apiHelper.js') }"></script>
 
-
   <script charset="utf-8">
     var _dragged;
     var _dropzone;
@@ -1250,7 +1249,10 @@ from django.utils.translation import ugettext as _
         self.openDefaultFolder(vm, e, 'default_to_trash');
       }
 
-      self.viewFile = function (file) {
+      self.viewFile = function (file, e) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        console.log('click')
         if (file.type == "dir") {
           // Reset page number so that we don't hit a page that doesn't exist
           self.targetPageNum(1);
@@ -1259,7 +1261,20 @@ from django.utils.translation import ugettext as _
           self.targetPath("${url('filebrowser.views.view', path='')}" + stripHashes(file.path));
           location.hash = stripHashes(file.path);
         } else {
-          location.href = file.url;
+          $('#fileViewerLoader').show();
+          $.ajax({
+            url: '/filebrowser/displaynew='+ file.path,
+            beforeSend:function (xhr) {
+              xhr.setRequestHeader('X-Requested-With', 'Hue');
+            },
+            dataType:'html',
+            success:function (response) {
+              var r = $(response);
+              $('#fileViewerLoader').html(r);
+            }
+          });
+          console.log(file)
+          //location.href = file.url;
         }
       };
 
@@ -2086,6 +2101,9 @@ from django.utils.translation import ugettext as _
         }
       });
 
+      huePubSub.subscribe('close.fileviewer', function () {
+        $('#fileViewerLoader').hide();
+      });
 
       $("#copyForm").on("submit", function () {
         if ($.trim($("#copyDestination").val()) == "") {

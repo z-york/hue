@@ -88,7 +88,7 @@ ${ fb_components.menubar() }
               </li>
             </ul>
           </div>
-          
+
           <button class="btn fileToolbarBtn" title="${_('Restore from trash')}" data-bind="visible: inRestorableTrash(), click: restoreTrashSelected, enable: selectedFiles().length > 0 && isCurrentDirSelected().length == 0"><i class="fa fa-cloud-upload"></i> ${_('Restore')}</button>
           <!-- ko ifnot: inTrash -->
           <!-- ko if: $root.isS3 -->
@@ -185,5 +185,6 @@ ${ fb_components.menubar() }
 
 </div>
 
+<div id="fileViewerLoader"></div>
 
 ${ commonfooter(request, messages) | n,unicode }

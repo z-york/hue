@@ -1,0 +1,58 @@
+.file-viewer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+}
+
+.file-viewer .top-bar {
+  padding: 10px;
+  background-color: #333;
+  opacity: 0.9;
+  color: #FFF;
+  width: 100%;
+  position: fixed;
+}
+
+.file-viewer .top-bar h3 {
+  margin: 0;
+}
+
+.file-viewer .top-bar a {
+  color: #FFF;
+  margin-right: 10px;
+}
+.file-viewer .file-area {
+  margin-top: 60px;
+  padding-bottom: 40px;
+  margin-bottom: 0;
+  min-height: calc(100% - 110px);
+}
+
+.file-viewer .file-pagination {
+  padding: 10px;
+  background-color: #333;
+  opacity: 0.9;
+  color: #FFF;
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  width: 400px;
+  margin-left: -200px;
+  border-radius: 4px;
+  text-align: center;
+}
+.file-viewer .file-pagination ul {
+  margin-left: 20px;
+}
+
+.file-viewer .file-pagination a {
+  color: #FFF;
+}
+
+.file-viewer .file-pagination a.muted {
+  color: #999;
+  cursor: default!important;
+}

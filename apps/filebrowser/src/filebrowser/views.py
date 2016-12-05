@@ -557,7 +557,7 @@ def content_summary(request, path):
     return JsonResponse(response)
 
 
-def display(request, path):
+def display(request, path, isNew=False):
     """
     Implements displaying part of a file.
 
@@ -669,8 +669,13 @@ def display(request, path):
     data['breadcrumbs'] = parse_breadcrumbs(path)
     data['show_download_button'] = SHOW_DOWNLOAD_BUTTON.get()
 
-    return render("display.mako", request, data)
+    if isNew:
+      return render("display_new.mako", request, data)
+    else:
+      return render("display.mako", request, data)
 
+def displaynew(request, path):
+  return display(request, path, True)
 
 def _can_inline_display(path):
   mimetype = mimetypes.guess_type(path)[0]
