@@ -82,7 +82,8 @@ from beeswax.server.dbms import QueryServerException
 from beeswax.server.hive_server2_lib import HiveServerClient,\
   PartitionKeyCompatible, PartitionValueCompatible, HiveServerTable,\
   HiveServerTColumnValue2
-from beeswax.test_base import BeeswaxSampleProvider, is_hive_on_spark, get_available_execution_engines, get_test_username
+from beeswax.test_base import BeeswaxSampleProvider, get_available_execution_engines, get_test_username, \
+  is_hive_on_spark, is_hive_with_sentry,
 from beeswax.hive_site import get_metastore, hiveserver2_jdbc_url
 
 
@@ -154,6 +155,9 @@ class TestBeeswaxWithHadoop(BeeswaxSampleProvider):
 
 
   def test_query_with_resource(self):
+    if is_hive_with_sentry():
+      raise SkipTest("This test requires ADD JAR Sentry privileges (https://issues.apache.org/jira/browse/SENTRY-905.)")
+
     udf = self.cluster.fs_prefix + "/square.py"
     script = self.cluster.fs.open(udf, "w")
     script.write(
