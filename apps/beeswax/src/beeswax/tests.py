@@ -83,7 +83,7 @@ from beeswax.server.hive_server2_lib import HiveServerClient,\
   PartitionKeyCompatible, PartitionValueCompatible, HiveServerTable,\
   HiveServerTColumnValue2
 from beeswax.test_base import BeeswaxSampleProvider, get_available_execution_engines, get_test_username, \
-  is_hive_on_spark, is_hive_with_sentry,
+  is_hive_on_spark, is_hive_with_sentry
 from beeswax.hive_site import get_metastore, hiveserver2_jdbc_url
 
 
