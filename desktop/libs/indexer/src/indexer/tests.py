@@ -26,6 +26,7 @@ from django.core.urlresolvers import reverse
 from desktop.lib.django_test_util import make_logged_in_client
 from desktop.lib.test_utils import add_to_group, grant_access
 from hadoop.pseudo_hdfs4 import is_live_cluster, get_db_prefix
+from libsolr.tests import get_test_username
 from libzookeeper.conf import ENSEMBLE
 
 from indexer.controller import get_solr_ensemble, CollectionManagerController
@@ -56,10 +57,10 @@ class TestIndexerWithSolr:
     if not is_live_cluster():
       raise SkipTest()
 
-    cls.client = make_logged_in_client(username='test', is_superuser=False)
-    cls.user = User.objects.get(username='test')
-    add_to_group('test')
-    grant_access("test", "test", "indexer")
+    cls.client = make_logged_in_client(username=get_test_username(), is_superuser=False)
+    cls.user = User.objects.get(username=get_test_username())
+    add_to_group(get_test_username())
+    grant_access(get_test_username(), "test", "indexer")
 
     cls.db = CollectionManagerController(cls.user)
 

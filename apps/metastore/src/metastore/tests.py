@@ -356,10 +356,10 @@ class TestMetastoreWithHadoop(BeeswaxSampleProvider):
 
 
   def test_has_write_access_backend(self):
-    client = make_logged_in_client(username='write_access_backend', groupname='write_access_backend', is_superuser=False)
-    grant_access("write_access_backend", "write_access_backend", "metastore")
-    grant_access("write_access_backend", "write_access_backend", "beeswax")
-    user = User.objects.get(username='write_access_backend')
+    client = make_logged_in_client(username=get_test_username(), groupname='write_access_backend', is_superuser=False)
+    grant_access(get_test_username(), "write_access_backend", "metastore")
+    grant_access(get_test_username(), "write_access_backend", "beeswax")
+    user = User.objects.get(username=get_test_username())
 
     resp = _make_query(client, 'CREATE TABLE test_perm_1 (a int);', database=self.db_name) # Only fails if we were using Sentry and won't allow SELECT to user
     resp = wait_for_query_to_finish(client, resp, max=30.0)
